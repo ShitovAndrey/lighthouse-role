@@ -37,7 +37,7 @@
   ansible.builtin.file:
     path: "{{ lighthouse_content_dir }}"
     state: "directory"
-    mode: '0755'
+    mode: '0644'
     owner: "root"
     group: "root"
 
