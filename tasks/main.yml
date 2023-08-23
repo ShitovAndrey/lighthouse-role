@@ -50,6 +50,8 @@
     mode: '0644'
     directory_mode: '0755'
     remote_src: true
+  notify:
+    - "HND_RESTART_NGINX_SERVICE"
 
 - name: "Deploy nginx configuration file"
   ansible.builtin.template:
@@ -60,11 +62,13 @@
     mode: '0644'
   vars:
     j2_nginx_root_dir: "{{ lighthouse_content_dir }}"
+  notify:
+    - "HND_RESTART_NGINX_SERVICE"
 
 - name: "Restart and enabled nginx service"
   ansible.builtin.systemd:
     name: "nginx.service"
-    state: "restarted"
+    state: "started"
     enabled: true
 
 - name: "Remove tmp directory"

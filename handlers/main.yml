@@ -1,2 +1,5 @@
 ---
-# handlers file for lighthouse-role
+- name: "HND_RESTART_NGINX_SERVICE"
+  ansible.builtin.systemd:
+    name: "nginx.service"
+    state: "restarted"
